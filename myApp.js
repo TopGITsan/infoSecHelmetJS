@@ -59,6 +59,7 @@ app.use(helmet.frameguard({action: 'deny'}));
 // POST bodies. Sanitizing means that you should find and encode the characters
 // that may be dangerous e.g. `<`, `>`.
 // More Info [here](https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet).
+// https://github.com/OWASP/CheatSheetSeries/blob/master/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.md
 
 // Modern browsers can help mitigating XSS risk by adoptiong software strategies,
 // which often are configurable via http headers.
@@ -68,7 +69,7 @@ app.use(helmet.frameguard({action: 'deny'}));
 // It still has limited support.
 
 // Use `helmet.xssFilter()`
-
+app.use(helmet.xssFilter({setOnOldIE: true}))
 
 
 /** 5) Avoid inferring the response MIME type - `helmet.noSniff()` */
