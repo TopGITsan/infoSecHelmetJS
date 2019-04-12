@@ -179,7 +179,13 @@ app.use(helmet.noCache);
 // **Hint**: 
 // in the `"'self'"` keyword, the single quotes are part of the keyword itself, 
 // so it needs to be enclosed in **double quotes** to be working.
-
+app.use(helmet.contentSecurityPolicy({
+  directive: {
+    defaultSrc:["'selft'"],
+    scriptSrc: ["'self'",'trusted-cdn.com'],
+    styleSrc: ["'self'", 'maxcdn.bootstrapcdn.com']
+  }
+}));
 
 
 /** TIP: */
